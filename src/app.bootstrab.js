@@ -1,11 +1,14 @@
 import express from "express"
 import ConnectionDB from "./DB/connectionDB.js"
 import userRouter from "./modules/users/user.controller.js"
+import cors from "cors"
 const app = express()
 const port = 3000
 
 const bootstrab = async( ) => {
+  app.use(cors({origin:"*"}))
     app.use(express.json())
+
   await ConnectionDB()
 app.get("/", (req , res) => res.status(200).json({mass:"welcom saraha 😊"}))
 
